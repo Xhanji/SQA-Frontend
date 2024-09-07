@@ -1,0 +1,78 @@
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 400px;
+    margin: 50px auto; 
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+    
+}
+
+
+.logo-imdb {
+    display: block;
+    margin-bottom: 20px;
+    background-color: #f5c518;
+    color: #000;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
+.container input[type="text"],
+.container input[type="email"],
+.container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+.container input[type="submit"] {
+    width: 100%;
+    max-width: 300px; 
+    padding: 10px;
+    background-color: #ffc107;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.container input[type="submit"]:hover {
+    background-color: #e0a800;
+}
+
+/* Estilo para el texto "New to IMDb?" */
+.new-to-imdb {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.new-to-imdb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.new-to-imdb a:hover {
+    text-decoration: underline;
+}
+
+.container h2 {
+    font-size: 27px; 
+    font-weight: bold; 
+    margin-bottom: 23px; 
+}

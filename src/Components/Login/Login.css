@@ -1,0 +1,89 @@
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* Estilos para el logo de IMDb */
+.logo-imdb {
+    display: inline-block;
+    background-color: #f5c518;
+    color: #000;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para los campos de entrada */
+.container input[type="email"],
+.container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón de inicio de sesión */
+.container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffc107;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.container input[type="submit"]:hover {
+    background-color: #e0a800;
+}
+
+/* Estilo para el enlace de "Forgot password?" */
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para el checkbox */
+.keep-signed-in {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Estilo para el texto debajo del botón */
+.new-to-imdb {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.new-to-imdb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.new-to-imdb a:hover {
+    text-decoration: underline;
+}
