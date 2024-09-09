@@ -3,23 +3,37 @@ import { Link } from 'react-router-dom';
 
 function Login() {
   // Estado para los campos de correo/teléfono y contraseña
-  const [emailOrPhone, setEmailOrPhone] = useState('');
+  const [email, setEmailOrPhone] = useState('');
   const [password, setPassword] = useState('');
 
   // Función para manejar el envío del formulario
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); // Evita el envío del formulario por defecto
+    let formdata = {email, password}
+    console.log(formdata)
 
-    if (validateInputs()) {
-      loginUser();
-    } else {
-      alert("Por favor, ingresa un correo/teléfono y una contraseña válidos.");
+    try {
+      const response = await fetch('http://localhost:8000/api/login', {
+        method: 'POST',
+        headers : {
+          "Content-Type": "aplication/json",
+      },
+        body: JSON.stringify(formdata),
+      });
+      const responseData = await response.json();
+      console.log(responseData.message)
     }
+    
+    
+    catch(error){
+      console.log(error)
+    } 
+
   };
 
   // Función para validar los campos de entrada
   const validateInputs = () => {
-    if (!emailOrPhone) {
+    if (!email) {
       return false;
     }
     if (password.length < 8) {
@@ -28,11 +42,7 @@ function Login() {
     return true;
   };
 
-  // Función simulada para iniciar sesión
-  const loginUser = () => {
-    console.log("Iniciando sesión con:", emailOrPhone, password);
-    alert("¡Inicio de sesión exitoso!");
-  };
+  
 
   return (
     <div className="container">
@@ -45,7 +55,7 @@ function Login() {
         <input
           type="email"
           placeholder="Correo Electrónico o Teléfono"
-          value={emailOrPhone}
+          value={email}
           onChange={(e) => setEmailOrPhone(e.target.value)}
           required
         />

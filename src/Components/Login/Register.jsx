@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Register.css';
+import { json } from 'react-router';
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -7,9 +8,10 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
+        let formdata = {name, email, password}
+        
         // Validaciones básicas
         if (password.length < 8) {
             alert('Password must be at least 8 characters long.');
@@ -25,10 +27,24 @@ const Register = () => {
         alert('Form submitted successfully!');
         // Aquí podrías enviar el formulario a un servidor usando fetch() o axios
         // Por ahora, solo resetearemos el formulario
-        setName('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
+        try {
+            const response = await fetch("http://localhost:8000/api/register", {
+                method : "POST",
+                headers : {
+                    "Content-Type": "aplication/json",
+                },
+                body: JSON.stringify(formdata), 
+            });
+            const responseData = await response.json();
+            if (response.ok){
+                window.location.href('/')
+            }
+        
+        }catch (error){
+            console.log(error)
+        }
+
+            
     };
 
     return (
