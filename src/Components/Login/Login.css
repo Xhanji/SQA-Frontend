@@ -87,3 +87,7 @@
 .new-to-imdb a:hover {
     text-decoration: underline;
 }
+.logout{
+    width: 20px;
+    height: 20px;
+}
