@@ -80,7 +80,14 @@
 background-color: #ddd;}
 .actions{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .actions h1{
-    margin-right: 35px;
+    font-size: 20px;
+}
+
+.profile-pic{
+    height: 50px;
+    width: 50px;
 }

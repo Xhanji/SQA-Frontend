@@ -3,11 +3,21 @@ import { Link } from "react-router-dom";
 import IMDB from "../Assets/IMDB.png";
 import { useStateContext } from "../../Providers/ContextProvider";
 import myicon from '../Assets/logout-svgrepo-com.svg'
+import profilepic from '../Assets/undraw_pic_profile_re_7g2h.svg'
 import axios from "axios";
 import axiosClient from "../../axiosClient";
 const Header = () => {
 
-  const {user, token, setUser} = useStateContext();
+  const {user, token, setUser, setToken} = useStateContext();
+
+const onLogout = (ev) =>{
+  ev.preventDefault();
+  axiosClient.get('logout')
+  .then(({}) => {
+    setUser(null)
+    setToken(null)
+  })
+}
 
   useEffect(()=> {
     axiosClient.get('/user')
@@ -59,7 +69,9 @@ const Header = () => {
         Register
       </Link>}
 
-      {token ? <button><img src={myicon} className="logout"></img></button>: <></>}
+      {token ? <img src={profilepic} className="profile-pic flex mx-5"></img> : {}}
+
+      {token ? <button onClick={onLogout}><img src={myicon} className="logout"></img></button>: <></>}
       </div>
     </div>
   );
