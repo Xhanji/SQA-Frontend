@@ -8,6 +8,8 @@ import axios from "axios";
 import axiosClient from "../../axiosClient";
 import './header.css'
 import dropdown from '../Assets/icons8-dropdown-50.png'
+import bookmark from '../Assets/bookmark.png'
+import userpic from '../Assets/user.png'
 const Header = () => {
 
   const {user, token, setUser, setToken} = useStateContext();
@@ -96,18 +98,37 @@ const onLogout = (ev) =>{
         </div>
       </div>
 
+      {token ?  
+      <div className="watchlist inline-flex">
+        <a href="" className=" space-x-1 items-center inline-flex flex-grow pr-6">
+          <img src={bookmark} alt="" className="bookmark" /> 
+          <span className="font-extralight">En Seguimiento</span>
+        </a>
+      </div> :  null
+      }
+
+      {}
+
+
+
       {/* Botón de Registro */}
-      <div className="actions" >
+      <div className="actions flex items-center space-x-1" >
       {token ? <h1>{user.name}</h1> : <Link
         to="/register"
         className="rounded-full border-2 px-4 py-2 hover:bg-zinc-950"
       >
         Register
       </Link>}
+      {token ? <div className="user-actions flex flex-grow">
+        <a href="" className="flex flex-grow space-x-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" class="ipc-icon ipc-icon--account-circle ipc-btn__icon ipc-btn__icon--pre" viewBox="0 0 24 24" fill="currentColor" role="presentation"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 01-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 01-6 3.22z"></path></svg>
+        <span className="font-extralight">NombreUsuario</span>
+        </a>
+      </div> :
+      null
+    }
 
-      {token ? <img src={profilepic} className="profile-pic flex mx-5"></img> : null}
-
-      {token ? <button onClick={onLogout}><img src={myicon} className="logout"></img></button>: <></>}
+      {token ? <button className="bg-transparent" onClick={onLogout}><img src={dropdown} className="logout"></img></button>: <></>}
       </div>
     </div>
   );
