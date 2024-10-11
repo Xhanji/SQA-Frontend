@@ -7,18 +7,20 @@ import Error from "./Components/Pages/Error";
 import Movie from "./Components/Pages/Movie";
 import Register from "./Components/Login/Register";
 import Login from "./Components/Login/Login";
+import Mockup from "./Components/Pages/Mockup";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" Component={Home} />
+        <Route path="/" Component={Mockup} />
         <Route path="movie/:id" Component={Movie} />
         <Route path="movies/:type" Component={MovieType} />
         <Route path="/register" Component={Register} /> 
         <Route path="/Login" Component={Login} />
         <Route path="/*" Component={Error} />
+        <Route path="/mockup" Component={Mockup}/>
       </Routes>
     </BrowserRouter>
   );

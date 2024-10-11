@@ -7,7 +7,7 @@ function Login() {
   // Estado para los campos de correo/teléfono y contraseña
   const [email, setEmailOrPhone] = useState('');
   const [password, setPassword] = useState('');
-  const {setUser , setToken} = useStateContext();
+  const { setUser, setToken, setUserType } = useStateContext();
   const navigate = useNavigate();
 
   // Función para manejar el envío del formulario
@@ -28,13 +28,15 @@ function Login() {
         console.log(response); // Aquí puedes ver toda la respuesta y su estructura
 
         // Verifica si response.data existe antes de acceder a user y token
-        const { access_token, user } = response.data;
+        const { access_token, user} = response.data;
 
         if (user && access_token) { // Verifica si 'user' y 'access_token' no están indefinidos
             setUser(user); // Guarda el usuario
-            setToken(access_token); // Guarda el token
+            setToken(access_token);
+            setUserType(user.user_type) // Guarda el token
             console.log('User:', user); // Muestra el usuario para verificar
             console.log('Token:', access_token); // Muestra el token para verificar
+            console.log('tipo de usuario', user.user_type)
             navigate('/')
         } else {
             console.error('User or token are undefined.');
