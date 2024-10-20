@@ -118,6 +118,11 @@ export default function Header() {
                   <a href="#" className="block px-4 py-2 text-sm text-[#f0f0f0] hover:bg-gray-700 duration-500" role="menuitem" onClick={onLogout}>
                     Cerrar sesión
                   </a>
+                  <Link to={'/admin/create'} className="block px-4 py-2 text-sm text-[#f0f0f0] hover:bg-gray-700 duration-500" role="menuitem">
+                    
+                      Añadir Obra
+            
+                  </Link>
                 </div>
               </div>
             )}

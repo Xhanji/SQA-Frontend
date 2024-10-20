@@ -8,6 +8,7 @@ import Movie from "./Components/Pages/Movie";
 import Register from "./Components/Login/Register";
 import Login from "./Components/Login/Login";
 import Mockup from "./Components/Pages/Mockup";
+import Form from "./Components/Pages/Admin/Form";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/Login" Component={Login} />
         <Route path="/*" Component={Error} />
         <Route path="/mockup" Component={Mockup}/>
+        <Route path="/admin/create" Component={Form}/>
       </Routes>
     </BrowserRouter>
   );
