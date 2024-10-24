@@ -79,28 +79,28 @@ const Movie = () => {
           : " "}
             </div>
           </div>
-          <div className="flex items-center space-x-2"> 
-            <h2 className="font-semibold ">Plot</h2>
+          <div>
+            <h2 className="font-semibold mb-2">Plot</h2>
             <p className="text-sm text-gray-400">{movie.overview}</p>
           </div>
-          <div className="flex space-x-3">
-            <h2 className="font-semibold ">Director</h2>
+          <div>
+            <h2 className="font-semibold mb-2">Director</h2>
             <p className="text-sm text-gray-400">Denis Villeneuve</p>
           </div>
-          <div className="flex space-x-3">
-            <h2 className="font-semibold ">Writers</h2>
+          <div>
+            <h2 className="font-semibold mb-2">Writers</h2>
             <p className="text-sm text-gray-400">Denis Villeneuve • Jon Spaihts • Frank Herbert</p>
           </div>
-          <div className="flex space-x-3">
-            <h2 className="font-semibold ">Stars</h2>
+          <div>
+            <h2 className="font-semibold mb-2">Stars</h2>
             <p className="text-sm text-gray-400">Timothée Chalamet • Zendaya • Rebecca Ferguson</p>
           </div>
-          <div className="flex space-x-3">
-            <h2 className="font-semibold ">Awards</h2>
+          <div>
+            <h2 className="font-semibold mb-2">Awards</h2>
             <p className="text-sm text-gray-400">Top rated movie #10 • 2 nominations</p>
           </div>
-          <div className="flex space-x-3">
-            <h2 className="font-semibold ">Reviews</h2>
+          <div>
+            <h2 className="font-semibold mb-2">Reviews</h2>
             <p className="text-sm text-gray-400">
               1K User Reviews • 500 Critic Reviews •
               <span className="bg-green-800 text-white px-1 rounded ml-1">79</span> Metascore

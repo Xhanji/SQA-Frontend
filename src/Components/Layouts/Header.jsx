@@ -135,6 +135,9 @@ export default function Header() {
             <Link to="/Login" className="px-4 py-2 hover:bg-zinc-950 fon">
               Iniciar Sesion
             </Link>
+            <Link to='/admin/table' className="px-4 py-2 hover:bg-zinc-950 fon">
+                Tabla de Acciones
+            </Link>
           </div>
         )}
       </div>
