@@ -1,68 +1,95 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Edit2, Trash2 } from 'lucide-react'
 
-const mockData = [
-  { id: 1, title: "Inception", type: "Movie", durationOrSeasons: "148 min", releaseDate: "2010-07-16", genre: "Sci-Fi", directorOrCreator: "Christopher Nolan" },
-  { id: 2, title: "Stranger Things", type: "Series", durationOrSeasons: "4 seasons", releaseDate: "2016-07-15", genre: "Drama", directorOrCreator: "Duffer Brothers" },
-  { id: 3, title: "The Shawshank Redemption", type: "Movie", durationOrSeasons: "142 min", releaseDate: "1994-09-23", genre: "Drama", directorOrCreator: "Frank Darabont" },
-  { id: 4, title: "Breaking Bad", type: "Series", durationOrSeasons: "5 seasons", releaseDate: "2008-01-20", genre: "Crime", directorOrCreator: "Vince Gilligan" },
-  { id: 5, title: "Pulp Fiction", type: "Movie", durationOrSeasons: "154 min", releaseDate: "1994-10-14", genre: "Crime", directorOrCreator: "Quentin Tarantino" },
-]
+export default function Component() {
+  const [movies, setMovies] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-export default function Table() {
-  const handleEdit = (id) => {
-    console.log('Edit item with id:', id)
+  const fetchMovies = async () => {
+    try {
+      const response = await fetch('http://localhost:8001/api/movies/index')
+      if (!response.ok) {
+        throw new Error('Failed to fetch movies')
+      }
+      const data = await response.json()
+      setMovies(data.data)
+      setLoading(false)
+    } catch (err) {
+      setError('Error fetching movies')
+      setLoading(false)
+    }
   }
 
-  const handleDelete = (id) => {
-    console.log('Delete item with id:', id)
+  useEffect(() => {
+    fetchMovies()
+  }, [])
+
+  const handleEdit = async (id) => {
+    // Implement edit functionality
+    console.log('Edit movie with id:', id)
   }
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/movies/movie/delete/${id}`, {
+        method: 'POST',
+      })
+      if (!response.ok) {
+        throw new Error('Failed to delete movie')
+      }
+      fetchMovies() // Refresh the movie list
+    } catch (err) {
+      console.error('Error deleting movie:', err)
+    }
+  }
+
+  if (loading) return <div className="text-center p-4 text-yellow-400">Loading...</div>
+  if (error) return <div className="text-center p-4 text-red-500">{error}</div>
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-8">
       <div className="max-w-7xl mx-auto bg-gray-800 rounded-lg shadow-2xl overflow-hidden">
-        <h1 className="text-3xl font-bold mb-6 text-yellow-400 text-center py-4">Movies and Series</h1>
+        <h1 className="text-3xl font-bold mb-6 text-yellow-400 text-center py-4">Movies</h1>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="bg-gray-700">
                 <th className="p-3 text-left text-yellow-400">Title</th>
-                <th className="p-3 text-left text-yellow-400">Type</th>
-                <th className="p-3 text-left text-yellow-400">Duration/Seasons</th>
+                <th className="p-3 text-left text-yellow-400">Duration</th>
                 <th className="p-3 text-left text-yellow-400">Release Date</th>
                 <th className="p-3 text-left text-yellow-400">Genre</th>
-                <th className="p-3 text-left text-yellow-400">Director/Creator</th>
+                <th className="p-3 text-left text-yellow-400">Director</th>
                 <th className="p-3 text-left text-yellow-400">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {mockData.map((item, index) => (
+              {movies.map((movie, index) => (
                 <motion.tr
-                  key={item.id}
+                  key={movie.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                   className="border-b border-gray-700 hover:bg-gray-700"
                 >
-                  <td className="p-3">{item.title}</td>
-                  <td className="p-3">{item.type}</td>
-                  <td className="p-3">{item.durationOrSeasons}</td>
-                  <td className="p-3">{item.releaseDate}</td>
-                  <td className="p-3">{item.genre}</td>
-                  <td className="p-3">{item.directorOrCreator}</td>
+                  <td className="p-3">{movie.titulo}</td>
+                  <td className="p-3">{movie.duracion} min</td>
+                  <td className="p-3">{movie.fecha_estreno}</td>
+                  <td className="p-3">{movie.genero}</td>
+                  <td className="p-3">{movie.director}</td>
                   <td className="p-3">
                     <div className="flex space-x-2">
                       <button
-                        onClick={() => handleEdit(item.id)}
+                        onClick={() => handleEdit(movie.id)}
                         className="p-1 bg-yellow-400 text-gray-900 rounded hover:bg-yellow-500 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-opacity-50"
                       >
                         <Edit2 size={16} />
                       </button>
                       <button
-                        onClick={() => handleDelete(item.id)}
+                        onClick={() => handleDelete(movie.id)}
                         className="p-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
                       >
                         <Trash2 size={16} />
