@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Edit2, Trash2 } from 'lucide-react'
+import { useNavigate } from 'react-router'
 
 export default function Component() {
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-
+  const navigator = useNavigate();
   const fetchMovies = async () => {
     try {
       const response = await fetch('http://localhost:8001/api/movies/index')
@@ -30,12 +31,13 @@ export default function Component() {
 
   const handleEdit = async (id) => {
     // Implement edit functionality
-    console.log('Edit movie with id:', id)
+    console.log(`Navigating to movie/edit/${id}`);
+    navigator(`/movie/edit/${id}`)
   }
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/movies/movie/delete/${id}`, {
+      const response = await fetch(`http://localhost:8001/api/movies/movie/delete/${id}`, {
         method: 'POST',
       })
       if (!response.ok) {

@@ -10,6 +10,7 @@ import Login from "./Components/Login/Login";
 import Mockup from "./Components/Pages/Mockup";
 import Form from "./Components/Pages/Admin/Form";
 import Table from "./Components/Pages/Admin/table";
+import MovieEditForm from "./Components/Pages/Admin/MovieEditForm";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/mockup" Component={Mockup}/>
         <Route path="/admin/create" Component={Form}/>
         <Route path="/admin/table" Component={Table}/>
+        <Route path="movie/edit/:id" Component={MovieEditForm}/>
       </Routes>
     </BrowserRouter>
   );
