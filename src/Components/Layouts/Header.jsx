@@ -124,9 +124,15 @@ export default function Header() {
             
                   </Link>
 
-                  <Link to='/admin/table' className="block px-4 py-2 text-sm text-[#f0f0f0] hover:bg-gray-700 duration-500">
+                  <Link to='/admin/peliculas' className="block px-4 py-2 text-sm text-[#f0f0f0] hover:bg-gray-700 duration-500">
                     Tabla de Peliculas
                   </Link>
+
+                  <Link to='/admin/series' className="block px-4 py-2 text-sm text-[#f0f0f0] hover:bg-gray-700 duration-500">
+                    Tabla de Series
+                  </Link>
+
+
                 </div>
               </div>
             )}

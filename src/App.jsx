@@ -11,6 +11,8 @@ import Mockup from "./Components/Pages/Mockup";
 import Form from "./Components/Pages/Admin/Form";
 import Table from "./Components/Pages/Admin/table";
 import MovieEditForm from "./Components/Pages/Admin/MovieEditForm";
+import SeriesTable from "./Components/Pages/Admin/SeriesTable";
+import SeriesEditForm from "./Components/Pages/Admin/SeriesEditForm";
 
 const App = () => {
   return (
@@ -25,8 +27,10 @@ const App = () => {
         <Route path="/*" Component={Error} />
         <Route path="/mockup" Component={Mockup}/>
         <Route path="/admin/create" Component={Form}/>
-        <Route path="/admin/table" Component={Table}/>
+        <Route path="/admin/peliculas" Component={Table}/>
+        <Route path="/admin/series" Component={SeriesTable}/>
         <Route path="movie/edit/:id" Component={MovieEditForm}/>
+        <Route path="serie/edit/:id" Component={SeriesEditForm}/>
       </Routes>
     </BrowserRouter>
   );
